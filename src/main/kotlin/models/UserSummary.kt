@@ -1,5 +1,5 @@
 package models
 
-class UserSummary(profile: Profile, age: Int, terms: Terms) {
+class UserSummary(profile: Profile, age: Long, terms: Terms) {
 
 }
