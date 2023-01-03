@@ -1,4 +1,4 @@
-package suspension_core
+package suspension.core
 
 import kotlin.coroutines.CoroutineContext
 

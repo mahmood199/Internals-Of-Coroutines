@@ -1,7 +1,0 @@
-package implementation
-
-class Advanced {
-
-
-
-}
