@@ -1,11 +1,11 @@
-package implementation
+package suspension.implementation
 
 import models.Profile
 import models.Terms
 import models.UserSummary
 import sun.rmi.runtime.Log
-import suspension_core.Continuation
-import suspension_core.ContinuationImpl
+import suspension.core.Continuation
+import suspension.core.ContinuationImpl
 import kotlin.coroutines.CoroutineContext
 
 class GetUserSummarySM : ContinuationImpl<UserSummary?>() {

@@ -1,6 +1,6 @@
-package suspension_core
+package suspension.core
 
-abstract class ContinuationImpl<T> : Continuation<T>{
+abstract class ContinuationImpl<T> : Continuation<T> {
     companion object {
         const val LABEL_INITIAL_VALUE = 0
     }
