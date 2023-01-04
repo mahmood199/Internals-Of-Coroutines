@@ -8,5 +8,5 @@ import kotlin.coroutines.CoroutineContext
 
 interface ContinuationInterceptor : CoroutineContext.Element {
     companion object Key : CoroutineContext.Key<ContinuationInterceptor>
-    fun <T> interceptContinuation(cont: Continuation<T>): Continuation<T>
+    fun <T : Any> interceptContinuation(cont: Continuation<T>): Continuation<T>
 }

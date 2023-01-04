@@ -24,7 +24,7 @@ abstract class CoroutineDispatcher :
     abstract fun dispatch(context: CoroutineContext, block: Runnable)
 
     //because in kotlin abstract classes have complete functions
-    override fun <T> interceptContinuation(continuation: Continuation<T>):
+    override fun <T : Any> interceptContinuation(continuation: Continuation<T>):
             Continuation<T> = DispatchedContinuation(this, continuation)
 
     public operator fun plus(other: CoroutineDispatcher) = other
