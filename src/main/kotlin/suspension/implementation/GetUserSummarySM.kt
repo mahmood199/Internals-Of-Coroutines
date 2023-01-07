@@ -64,7 +64,6 @@ fun getUserSummary(
             Log.getLog("dsa","fetching summary of $id", 1)
             sm.label = 1
             fetchProfile(id, sm) // suspending fun
-            return
         }
         1 -> {  // label 1 -> resuming
             throwOnFailure(sm.exception)
@@ -73,7 +72,6 @@ fun getUserSummary(
             sm.label = 2
             sm.terms = sm.value as Terms
             validateTerms(sm.profile!!.country, sm.age!!, sm) // suspending fun
-            return
         }
         2 -> { // label 2 -> resuming and terminating
             throwOnFailure(sm.exception)
