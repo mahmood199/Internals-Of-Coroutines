@@ -59,6 +59,7 @@ fun getUserSummary(
             //First time assign continuation
             // then assign value of returned
             // variable after casting
+            throwOnFailure(sm.exception)
             sm.cont = cont
             Log.getLog("dsa","fetching summary of $id", 1)
             sm.label = 1
@@ -66,6 +67,7 @@ fun getUserSummary(
             return
         }
         1 -> {  // label 1 -> resuming
+            throwOnFailure(sm.exception)
             sm.profile = sm.value as Profile
             sm.age = calculateAgeCon(sm.profile!!.dateOfBirth)
             sm.label = 2
@@ -74,6 +76,7 @@ fun getUserSummary(
             return
         }
         2 -> { // label 2 -> resuming and terminating
+            throwOnFailure(sm.exception)
             sm.label = 3// not required
             sm.terms = sm.value as Terms
 
@@ -84,8 +87,14 @@ fun getUserSummary(
             /*
                         return UserSummary(profile, age, terms)
             */
+        } else -> {
+            throw IllegalStateException()
         }
     }
+}
+
+fun throwOnFailure(result: Throwable?) {
+    result?.printStackTrace()
 }
 
 fun fetchProfile(id: Int, sm: ContinuationImpl<UserSummary?>): Profile {
