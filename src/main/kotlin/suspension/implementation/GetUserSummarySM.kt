@@ -13,12 +13,15 @@ class GetUserSummarySM : ContinuationImpl<UserSummary?>() {
     //Coroutine Impl values holder
     // result holder
     var value: UserSummary? = null
+    //To throw exception in case of error
     var exception: Throwable? = null
     //to store the initial continuation that is sent when the execution
     //of getUserSummary() is first started
     var cont: Continuation<UserSummary?>? = null
 
     //Function variables
+    //Keep all vairables as nullable as
+    //couroutine can fail at any time and not give us the result.
     val id: Int? = null
     var profile: Profile? = null
     var age: Long? = null
