@@ -31,13 +31,14 @@ class Basic {
         return Terms()
     }
 
-    //Basic Implementation of internal working of coroutine
-    //1. Divide the function at the points where it can be resumed. After every suspend function call
-    //2. Use label with when statement to decide which part of code to execute
-    //3. Create a state machine which extends ContinuationImpl
-    //4. In the doResume of ContinuationImpl call the same function again, including a continuation params
-    //5. This simple implementation just demonstrates the state machine implementation.
-    //6. It does not takes into consideration the processing of result returned by other suspending functions.
+    /**Basic Implementation of internal working of coroutine
+    * 1. Divide the function at the points where it can be resumed. After every suspend function call
+    * 2. Use label with when statement to decide which part of code to execute
+    * 3. Create a state machine which extends ContinuationImpl
+    * 4. In the doResume of ContinuationImpl call the same function again, including a continuation params
+    * 5. This simple implementation just demonstrates the state machine implementation.
+    * 6. It does not takes into consideration the processing of result returned by other suspending functions.
+    */
 
     fun getUserSummaryExplanation(id: Int, continuation: Continuation<String>): UserSummary {
 
