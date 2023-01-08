@@ -19,9 +19,10 @@ class GetUserSummarySM : ContinuationImpl<UserSummary?>() {
     //of getUserSummary() is first started
     var cont: Continuation<UserSummary?>? = null
 
-    //Function variables
-    //Keep all vairables as nullable as
-    //couroutine can fail at any time and not give us the result.
+    /**Function variables
+    * Keep all vairables as nullable as
+    * coroutine can fail at any time and not give us the result.
+    */
     val id: Int? = null
     var profile: Profile? = null
     var age: Long? = null
@@ -51,24 +52,28 @@ fun getUserSummary(
     cont: Continuation<UserSummary?>
 ){
 
-    //We check whether cont is an instance of GetUserSummarySM; if that's the case,
-    //we use it as the state. If not, that means that it's the initial execution of the
-    //function, so a new one is created.
+    /**We check whether cont is an instance of GetUserSummarySM; if that's the case,
+    *we use it as the state. If not, that means that it's the initial execution of the
+    *function, so a new one is created.
+    */
     val sm = cont as? GetUserSummarySM ?: GetUserSummarySM()
 
     when(sm.label) {
         0 -> {
-            // Label 0 -> first execution
-            //First time assign continuation
-            // then assign value of returned
-            // variable after casting
+            /**Label 0 -> first execution
+            * First time assign continuation
+            * then assign value of returned
+            * variable after casting
+            */
             throwOnFailure(sm.exception)
             sm.cont = cont
             Log.getLog("dsa","fetching summary of $id", 1)
             sm.label = 1
             fetchProfile(id, sm) // suspending fun
         }
-        1 -> {  // label 1 -> resuming
+        1 -> {
+            /** label 1 -> resuming
+             */
             throwOnFailure(sm.exception)
             sm.profile = sm.value as Profile
             sm.age = calculateAgeCon(sm.profile!!.dateOfBirth)
@@ -76,7 +81,9 @@ fun getUserSummary(
             sm.terms = sm.value as Terms
             validateTerms(sm.profile!!.country, sm.age!!, sm) // suspending fun
         }
-        2 -> { // label 2 -> resuming and terminating
+        2 -> {
+            /** label 2 -> resuming and terminating
+             */
             throwOnFailure(sm.exception)
             sm.label = 3// not required
             sm.terms = sm.value as Terms
@@ -85,9 +92,6 @@ fun getUserSummary(
              *
              */
             sm.cont!!.resume(UserSummary(sm.profile!!, sm.age!!, sm.terms!!))
-            /*
-                        return UserSummary(profile, age, terms)
-            */
         } else -> {
             throw IllegalStateException()
         }
@@ -109,3 +113,10 @@ fun validateTerms(country: String, age: Long, sm: ContinuationImpl<UserSummary?>
 fun calculateAgeCon(dateOfBirth : String) : Long {
     return 2
 }
+
+/**
+ * If the suspend function doesn;t return COROUTINE_SUSPENDED to the caller function
+ * then the execution of that suspend function happens without suspension. and the
+ * result returned by it is casted to the type which is specified in the
+ * function declaration
+ */
