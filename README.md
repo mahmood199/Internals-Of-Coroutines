@@ -21,6 +21,11 @@ This repo also contains
 [![Screenshot-2023-01-03-010755.png](https://i.postimg.cc/7Y0MkNtL/Screenshot-2023-01-03-010755.png)](https://postimg.cc/KRcg7t2X)
 
 #Kotlin Continuation Interface.\
-This is used under the hood for the asynchronous call back in coroutines which makes coroutines appear to be synchronous
+This is used under the hood for the asynchronous call back in coroutines which makes coroutines appear to be synchronous\
 
 ![Screenshot 2023-01-09 231227](https://user-images.githubusercontent.com/58071934/211372875-77952cdd-c644-407c-b638-ef541b59d533.png)
+
+
+#Kotlin ContinuationImpl Abstract class.\
+This will be implemented by the class representation of the funtion in the byte code. This helps the suspend function for state management. The variable `label` is used for that.\
+![Screenshot 2023-01-09 232332](https://user-images.githubusercontent.com/58071934/211375205-0246326c-a27a-4392-b5d2-0ef95bda8ebd.png)
