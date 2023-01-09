@@ -19,3 +19,8 @@ This repo also contains
 # Execution of function when suspend keyword is used
 
 [![Screenshot-2023-01-03-010755.png](https://i.postimg.cc/7Y0MkNtL/Screenshot-2023-01-03-010755.png)](https://postimg.cc/KRcg7t2X)
+
+#Kotlin Continuation Interface.\
+This is used under the hood for the asynchronous call back in coroutines which makes coroutines appear to be synchronous
+
+![Screenshot 2023-01-09 231227](https://user-images.githubusercontent.com/58071934/211372875-77952cdd-c644-407c-b638-ef541b59d533.png)
