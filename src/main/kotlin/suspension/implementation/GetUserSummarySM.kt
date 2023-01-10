@@ -20,7 +20,7 @@ class GetUserSummarySM : ContinuationImpl<UserSummary?>() {
     var cont: Continuation<UserSummary?>? = null
 
     /**Function variables
-    * Keep all vairables as nullable as
+    * Keep all variables as nullable as
     * coroutine can fail at any time and not give us the result.
     */
     val id: Int? = null
