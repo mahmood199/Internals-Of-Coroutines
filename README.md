@@ -35,7 +35,7 @@ This will be implemented by the class representation of the funtion in the byte 
 ![Screenshot 2023-01-10 221756](https://user-images.githubusercontent.com/58071934/211612715-f7a80673-4332-409b-93f9-6f099e204561.png)
 
 
-#Inheritance structure of the state machine classes
+#Inheritance structure of the state machine classes.\
 ![Screenshot 2023-01-11 195128](https://user-images.githubusercontent.com/58071934/211830124-0ed250d1-0adc-42de-b3b2-caa1350bfc32.png)
 
 
