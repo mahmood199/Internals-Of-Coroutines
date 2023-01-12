@@ -38,6 +38,8 @@ This will be implemented by the class representation of the funtion in the byte 
 #Inheritance structure of the state machine classes.\
 ![Screenshot 2023-01-11 195128](https://user-images.githubusercontent.com/58071934/211830124-0ed250d1-0adc-42de-b3b2-caa1350bfc32.png)
 
+#NOTE - \
+a suspend function will only suspend if the suspending functions it calls returns COROUTINE_SUSPENDED otherwise, it will cast the result of the function to the expected type— Profile and Terms in this case—and continue executing the next label. This guarantees that no unnecessary suspensions occur.
 
 
 
