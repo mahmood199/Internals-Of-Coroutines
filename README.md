@@ -42,5 +42,27 @@ This will be implemented by the class representation of the funtion in the byte 
 a suspend function will only suspend if the suspending functions it calls returns COROUTINE_SUSPENDED otherwise, it will cast the result of the function to the expected type— Profile and Terms in this case—and continue executing the next label. This guarantees that no unnecessary suspensions occur.
 
 
+#Coroutine terminology\
+1. CoroutineContext
+Coroutine are always started in a context which is coroutine context\
+CoroutineContext decides the thread on which the execution of a given block of code should happen.\
+CoroutineContext helps in switching between threads\
+Context switching is very hard in threads. Context switching means changing of threads to execute different portions of the code. \
+
+
+2. CoroutineScope\
+Lifetime of a coroutine. Determines the lifetime/span/boundary to which a coroutine must be alive. Helps in cancellation of coroutine if the scope owner is destroyed\
+
+
+3. Dispatchers - Basically a thread pool \
+Helps to dispatch on which thread the coroutine must run / way to define on which thread the coroutine must start. \
+Dispatch our coroutine to threads\
+Types of dispatchers available \
+    a) IO \ 
+    b) Main \
+    c) Default \
+    d) Unconfined \ 
+
+
 
 
