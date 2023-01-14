@@ -55,13 +55,14 @@ Lifetime of a coroutine. Determines the lifetime/span/boundary to which a corout
 
 
 3. Dispatchers - Basically a thread pool \
-Helps to dispatch on which thread the coroutine must run / way to define on which thread the coroutine must start. \
+Helps to dispatch on which thread the coroutine must run \
+Way to define on which thread the coroutine must start. \
 Dispatch our coroutine to threads\
 Types of dispatchers available \
-    a) IO \ 
-    b) Main \
-    c) Default \
-    d) Unconfined \ 
+    a. IO
+    b. Main
+    c. Default
+    d. Unconfined
 
 
 
