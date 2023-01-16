@@ -52,17 +52,18 @@ Context switching is very hard in threads. Context switching means changing of t
 
 2. CoroutineScope\
 Lifetime of a coroutine. Determines the lifetime/span/boundary to which a coroutine must be alive. Helps in cancellation of coroutine if the scope owner is destroyed\
-
+A coroutine can have child coroutine and the child coroutines are cancelled/ destroyed if the parent coroutine is destroyed.
 
 3. Dispatchers - Basically a thread pool \
 Helps to dispatch on which thread the coroutine must run \
 Way to define on which thread the coroutine must start. \
 Dispatch our coroutine to threads\
 Types of dispatchers available \
-    a. IO
-    b. Main
-    c. Default
-    d. Unconfined
+    a. IO\
+    b. Main\
+    c. Default\
+    d. Unconfined\
+
 
 
 
