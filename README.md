@@ -64,6 +64,9 @@ Types of dispatchers available \
     c. Default\
     d. Unconfined\
 
+\
+A coroutine is an instance of suspendable computation. It is conceptually similar to a thread, in the sense that it takes a block of code to run that works concurrently with the rest of the code. However, a coroutine is not bound to any particular thread. It may suspend its execution in one thread and resume in another one.
+
 
 
 
