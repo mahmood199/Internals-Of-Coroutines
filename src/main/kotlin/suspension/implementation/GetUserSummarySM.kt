@@ -8,6 +8,8 @@ import suspension.core.Continuation
 import suspension.core.ContinuationImpl
 import kotlin.coroutines.CoroutineContext
 
+val COROUTINE_SUSPENDED: Any? = ""
+
 class GetUserSummarySM : ContinuationImpl<UserSummary?>() {
 
     //Coroutine Impl values holder
@@ -69,7 +71,8 @@ fun getUserSummary(
             sm.cont = cont
             Log.getLog("dsa","fetching summary of $id", 1)
             sm.label = 1
-            fetchProfile(id, sm) // suspending fun
+            val result = fetchProfile(id, sm) // suspending fun
+            if (result == COROUTINE_SUSPENDED) return
         }
         1 -> {
             /** label 1 -> resuming
@@ -79,13 +82,14 @@ fun getUserSummary(
             sm.age = calculateAgeCon(sm.profile!!.dateOfBirth)
             sm.label = 2
             sm.terms = sm.value as Terms
-            validateTerms(sm.profile!!.country, sm.age!!, sm) // suspending fun
+            val result = validateTerms(sm.profile!!.country, sm.age!!, sm) // suspending fun
+            if (result == COROUTINE_SUSPENDED) return
         }
         2 -> {
             /** label 2 -> resuming and terminating
              */
             throwOnFailure(sm.exception)
-            sm.label = 3// not required
+            sm.label = -1 // No valid states beyond this
             sm.terms = sm.value as Terms
 
             /**Dont return the result. Instead invoke the callback received from cont object
@@ -93,7 +97,7 @@ fun getUserSummary(
              */
             sm.cont!!.resume(UserSummary(sm.profile!!, sm.age!!, sm.terms!!))
         } else -> {
-            throw IllegalStateException()
+            throw IllegalStateException("call to 'resume' before 'invoke' with coroutine")
         }
     }
 }
