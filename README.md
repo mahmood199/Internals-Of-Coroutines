@@ -68,6 +68,9 @@ Types of dispatchers available \
 A coroutine is an instance of suspendable computation. It is conceptually similar to a thread, in the sense that it takes a block of code to run that works concurrently with the rest of the code. However, a coroutine is not bound to any particular thread. It may suspend its execution in one thread and resume in another one.
 
 
+#Chain of function calls and their classes that are involved forr the creation of a cotoutine
+1. 
+![Screenshot 2023-01-20 163948](https://user-images.githubusercontent.com/58071934/213681739-25d75835-4ca8-44d2-b1a6-a411e759c6e4.png)
 
 
 
