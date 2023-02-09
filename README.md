@@ -44,6 +44,8 @@ a suspend function will only suspend if the suspending functions it calls return
 
 # Coroutine terminology
 1. CoroutineContext
+A CoroutineContext has a key-value store of Element objects, keyed by a
+class
 Coroutine are always started in a context which is coroutine context\
 CoroutineContext decides the thread on which the execution of a given block of code should happen.\
 CoroutineContext helps in switching between threads\
@@ -58,10 +60,12 @@ A coroutine can have child coroutine and the child coroutines are cancelled/ des
 Way to define on which thread the coroutine must start. \
 Dispatch our coroutine to threads\
 Types of dispatchers available \
-    a. IO\
-    b. Main\
-    c. Default\
+    a. IO - On the IO dispatcher there are by default 64 threads, so there could be up to 64 parallel tasks running on that dispatcher.for doing IO bound work\
+    b. Main - \
+    c. Default - The difference is that Dispatchers.Default is limited to the number of CPU cores (with a minimum of 2) so only N (where N == cpu cores) tasks can run in parallel in this dispatcher. For doing CPU bound work\
     d. Unconfined\
+    
+use Dispatchers.IO for I/O bound work or other work thattends to block, and use Dispatchers.Default for work that tends not to block.
 
 \
 A coroutine is an instance of suspendable computation. It is conceptually similar to a thread, in the sense that it takes a block of code to run that works concurrently with the rest of the code. However, a coroutine is not bound to any particular thread. It may suspend its execution in one thread and resume in another one.
