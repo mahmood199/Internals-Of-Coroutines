@@ -79,4 +79,25 @@ A coroutine is an instance of suspendable computation. It is conceptually simila
 ![image](https://user-images.githubusercontent.com/58071934/213872165-7cee3fc6-9414-4963-a301-d468c551c44e.png)
 
 
+## Coroutine builder
+All coroutines start with a coroutine builder. The block of code passed to the builder,
+along with anything called from that code block (directly or indirectly), represents the coroutine. They all create a coroutine scope
+
+1. launch - returns a refernce to a Job object.
+2. async - returns a deferred object which is a sub-class of Job.
+3. runBlocking - 
+4. withContext - takes the dispatchers and executes the code supplied as lambda. This also can be considered as a coroutine builder as it creates a new scope just like other. This is basically used to change the dispatchers ie to execute some part of code by other thread pool
+
+### supervisorScope
+The default behavior of a CoroutineScope is if one coroutine fails with an exception,
+the scope cancels all coroutines in the scope. Frequently, that is what we want. If we
+are doing N coroutines and need the results of all N of them to proceed, as soon as
+one crashes, we know that we do not need to waste the time of doing the rest of the
+work. However, sometimes that is not what we want. For example, suppose that we are
+uploading N images to a server. Just because one image upload fails does not
+necessarily mean that we want to abandon uploading the remaining images. Instead,
+we might want to complete the rest of the uploads, then find out about the failures
+and handle them in some way (e.g., retry policy).
+
+
 
