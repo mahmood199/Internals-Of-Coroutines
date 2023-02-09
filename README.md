@@ -79,4 +79,11 @@ A coroutine is an instance of suspendable computation. It is conceptually simila
 ![image](https://user-images.githubusercontent.com/58071934/213872165-7cee3fc6-9414-4963-a301-d468c551c44e.png)
 
 
+## Coroutine builder
+All coroutines start with a coroutine builder. The block of code passed to the builder,
+along with anything called from that code block (directly or indirectly), represents the coroutine. 
+
+1. launch - 
+2. async - 
+3. runBlocking - 
 
