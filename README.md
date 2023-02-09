@@ -54,8 +54,7 @@ Context switching is very hard in threads. Context switching means changing of t
 Lifetime of a coroutine. Determines the lifetime/span/boundary to which a coroutine must be alive. Helps in cancellation of coroutine if the scope owner is destroyed\
 A coroutine can have child coroutine and the child coroutines are cancelled/ destroyed if the parent coroutine is destroyed.
 
-3. Dispatchers - Basically a thread pool \
-Helps to dispatch on which thread the coroutine must run \
+3. Dispatchers - Basically a thread pool. Helps to dispatch on which thread the coroutine must run.
 Way to define on which thread the coroutine must start. \
 Dispatch our coroutine to threads\
 Types of dispatchers available \
@@ -97,7 +96,9 @@ work. However, sometimes that is not what we want. For example, suppose that we 
 uploading N images to a server. Just because one image upload fails does not
 necessarily mean that we want to abandon uploading the remaining images. Instead,
 we might want to complete the rest of the uploads, then find out about the failures
-and handle them in some way (e.g., retry policy).
+and handle them in some way (e.g., retry policy). \
 
+NOTE - A coroutine is not bound to be executed by a thread. It can be started, paused in one thread and resumed on another thread when it gets free from suspending work. Similarly a thread is not bound to run a single coroutine. It can run multiple coroutines. 
+However there is a way to retrict the coroutine to single thread ie by using a single custom thread dispatcher.
 
 
