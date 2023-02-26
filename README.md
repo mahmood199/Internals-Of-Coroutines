@@ -91,6 +91,17 @@ along with anything called from that code block (directly or indirectly), repres
 3. runBlocking - 
 4. withContext - takes the dispatchers and executes the code supplied as lambda. This also can be considered as a coroutine builder as it creates a new scope just like other. This is basically used to change the dispatchers ie to execute some part of code by other thread pool
 
+<br>
+
+|                                                   launch                                                  |                                                                                    async                                                                                    |
+|:---------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+|                                              Fire and forget                                              |                                                                        Perform task and return result                                                                       |
+|                       launch returns a `job` and does not carry any resulting value                       |                              async returns an instance of Deferred<T>, which has an  await() function that returns the result of the coroutine                              |
+| If the exception comes inside the launch block, it  will crash the application if we have not handled it. | If exception comes inside the async block, it is stored  inside the deferring result and is not delivered anywhere else,  it will get dropped/ignored unless we handled it. |
+
+
+<br>
+
 ### supervisorScope
 The default behavior of a CoroutineScope is if one coroutine fails with an exception,
 the scope cancels all coroutines in the scope. Frequently, that is what we want. If we
