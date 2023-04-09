@@ -89,7 +89,8 @@ along with anything called from that code block (directly or indirectly), repres
 1. launch - returns a refernce to a Job object.
 2. async - returns a deferred object which is a sub-class of Job.
 3. runBlocking - 
-4. withContext - takes the dispatchers and executes the code supplied as lambda. This also can be considered as a coroutine builder as it creates a new scope just like other. This is basically used to change the dispatchers ie to execute some part of code by other thread pool
+4. withContext - takes the dispatchers and executes the code supplied as lambda. This also can be considered as a coroutine builder as it creates a new scope just like other. This is basically used to change the dispatchers ie to execute some part of code by other thread pool. 
+withContext not only changes context but also create a new job that is child to the parent job.
 
 <br>
 
@@ -116,4 +117,7 @@ and handle them in some way (e.g., retry policy). \
 NOTE - A coroutine is not bound to be executed by a thread. It can be started, paused in one thread and resumed on another thread when it gets free from suspending work. Similarly a thread is not bound to run a single coroutine. It can run multiple coroutines. 
 However there is a way to retrict the coroutine to single thread ie by using a single custom thread dispatcher.
 
+await() on async, join() on job are blocking calls.
+join() -> no action if completed.
+await -> Throws if completed.
 
