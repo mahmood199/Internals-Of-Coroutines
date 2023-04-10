@@ -117,7 +117,7 @@ and handle them in some way (e.g., retry policy). \
 NOTE - A coroutine is not bound to be executed by a thread. It can be started, paused in one thread and resumed on another thread when it gets free from suspending work. Similarly a thread is not bound to run a single coroutine. It can run multiple coroutines. 
 However there is a way to retrict the coroutine to single thread ie by using a single custom thread dispatcher.
 
-await() on async, join() on job are blocking calls.
-join() -> no action if completed.
-await -> Throws if completed.
+## await() on async, join() on job are blocking calls. 
+## join() -> no action if completed. 
+## await -> Throws if completed. 
 
