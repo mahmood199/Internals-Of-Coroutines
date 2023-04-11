@@ -40,6 +40,7 @@ class Basic {
     * 6. It does not takes into consideration the processing of result returned by other suspending functions.
     */
 
+/*
     fun getUserSummaryExplanation(id: Int, continuation: Continuation<String>): UserSummary {
 
         val sm = object : ContinuationImpl<String>() {
@@ -66,6 +67,8 @@ class Basic {
                 println("fetching summary of $id")
                 fetchProfile(id) // suspending fun
             }
+*/
+/*
             1 -> {
                 val age = calculateAge(profile.dateOfBirth)
                 val terms = validateTerms(profile.country, age) // suspending fun
@@ -73,10 +76,13 @@ class Basic {
             2 -> {
                 return UserSummary(profile, age, terms)
             }
+*//*
+
         }
 
 
     }
+*/
 
 
 }
