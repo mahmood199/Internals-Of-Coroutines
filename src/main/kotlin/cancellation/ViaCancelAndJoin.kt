@@ -27,6 +27,11 @@ suspend fun stallForTime2() {
 
 /**
  *      Pretty much same as cancel()
+ *
+ *
+ *      BUT!!!!
+ *
+ *
  *      cancel() is non-blocking call.
  *      Next thing will be executed.
  *      But cancelAndJoin() is a blocking call.
