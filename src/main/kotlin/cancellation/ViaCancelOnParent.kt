@@ -32,24 +32,12 @@ suspend fun cancelParentJob(job: Job, cancellationType: Int) {
     }
 }
 /**
- *      The cancel function cancels a coroutine
- *      immediately without waiting for it to
- *      complete, and returns a Boolean indicating
- *      whether the cancellation was successful
- *      or not. It does not wait for the coroutine
- *      to finish and may leave resources and
- *      tasks running in the background.
- *      This function is typically used when
- *      the coroutine needs to be cancelled immediately.
- *
- *      On the other hand, the cancelAndJoin
- *      function cancels a coroutine and waits
- *      for it to complete before returning.
- *      It also rethrows any exceptions that were
- *      thrown by the cancelled coroutine during
- *      its execution. This function is typically
- *      used when the calling coroutine needs to
- *      wait for the cancelled coroutine to complete
- *      and handle any exceptions that occurred during its execution.
- *
+ *      When we cancel the parent, both that job and our withContext()
+ *      child job are canceled. When we call delay() in the withContext()
+ *      job, the coroutines system sees that our job was canceled, so it
+ *      abandons execution, so we never get the “This is executed at the
+ *      end of the child job”. Similarly, the coroutines system sees
+ *      that the parent job was canceled while it was blocked waiting on
+ *      stallForTime() to return,so it abandons execution of that job
+ *      too, so we never see the “This is executed after the delay” message.
  */
