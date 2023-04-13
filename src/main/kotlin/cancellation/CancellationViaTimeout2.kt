@@ -12,7 +12,7 @@ fun main() = runBlocking {
                 timeoutDelay2()
                 println("This is executed after the delay")
             }
-        } catch (e: Exception) {
+        } catch (e: TimeoutCancellationException) {
             println("We got a timeout exception $e")
         }
         println("This is printed after the timeout")
