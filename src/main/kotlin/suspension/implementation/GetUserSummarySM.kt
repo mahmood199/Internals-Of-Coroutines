@@ -3,7 +3,6 @@ package suspension.implementation
 import models.Profile
 import models.Terms
 import models.UserSummary
-import sun.rmi.runtime.Log
 import suspension.core.Continuation
 import suspension.core.ContinuationImpl
 import kotlin.coroutines.CoroutineContext
@@ -69,7 +68,7 @@ fun getUserSummary(
             */
             throwOnFailure(sm.exception)
             sm.cont = cont
-            Log.getLog("dsa","fetching summary of $id", 1)
+            print("dsa fetching summary of $id 1")
             sm.label = 1
             val result = fetchProfile(id, sm) // suspending fun
             if (result == COROUTINE_SUSPENDED) return
